@@ -116,7 +116,7 @@ namespace SimpleMappings
         
         private static string Normalize(string input)
         {
-            return input.TrimStart('_', 'm').ToLowerInvariant();
+            return input.TrimStart('_').ToLowerInvariant();
         }
 
         private static string GetMemberName<TProperty>(Expression<TProperty> expression)

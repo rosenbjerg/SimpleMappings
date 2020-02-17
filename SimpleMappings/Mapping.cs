@@ -3,7 +3,7 @@ using System.Collections.Generic;
 
 namespace SimpleMappings
 {
-    public class Mapping<TSource, TDestination>
+    public sealed class Mapping<TSource, TDestination>
     {
         private readonly Func<TDestination> _factory;
         private readonly ICollection<Action<TSource, TDestination>> _mappings;
@@ -28,6 +28,7 @@ namespace SimpleMappings
                 yield return destinationInstance;
             }
         }
+
         /// <summary>
         /// Maps an instance of the source type to an instance of the destination type
         /// </summary>

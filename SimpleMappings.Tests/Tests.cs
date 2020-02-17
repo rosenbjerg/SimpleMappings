@@ -43,5 +43,29 @@ namespace SimpleMappings.Tests
             Assert.AreEqual(model.Structs.Length, dto.structs.Count);
             Assert.AreEqual(model.Structs.Sum(s => s.Stat), dto.sumOfStructs);
         }
+        
+        class Mapper : MapperBase
+        {
+            public Mapping<MyClass, MyClassDto> MyClassMapper => MappingBuilder<MyClass, MyClassDto>.New()
+                .MapProperty(mc => mc.Structs.Sum(s => s.Stat), mcd => mcd.sumOfStructs)
+                .UsingFactory<MyClassDto>();
+        }
+        [Test]
+        public void BasicMapperTest()
+        {
+            var mapper = new Mapper();
+            
+            var model = new MyClass
+            {
+                Age = 23,
+                Name = "daw",
+                Numbers = new List<int> {1, 2, 3},
+                Structs = new[] {new MyStruct {Stat = 2.3}, new MyStruct {Stat = 5.4}}
+            };
+
+            var dto = mapper.Map<MyClass, MyClassDto>(model);
+            
+            Assert.AreEqual(model.Structs.Sum(s => s.Stat), dto.sumOfStructs);
+        }
     }
 }
