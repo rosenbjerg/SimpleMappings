@@ -4,6 +4,17 @@
         <TargetFramework>netstandard2.0</TargetFramework>
         <LangVersion>8</LangVersion>
         <Nullable>enable</Nullable>
+        <Title>SimpleMappings</Title>
+        <Authors>Malte Rosenbjerg</Authors>
+        <Description>Simple mappings from object to object - because I just needed a simple-as-can-be mapping library</Description>
+        <Copyright>Rosenbjerg Softworks</Copyright>
+        <PackageProjectUrl>https://github.com/rosenbjerg/SimpleMappings</PackageProjectUrl>
+        <PackageLicenseUrl>https://github.com/rosenbjerg/SimpleMappings/blob/master/LICENSE</PackageLicenseUrl>
+        <RepositoryUrl>https://github.com/rosenbjerg/SimpleMappings</RepositoryUrl>
+        <RepositoryType>GitHub</RepositoryType>
+        <PackageTags>mappings mapping mapper dto </PackageTags>
+        <PackageReleaseNotes>First release</PackageReleaseNotes>
+        <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
     </PropertyGroup>
 
 </Project>
