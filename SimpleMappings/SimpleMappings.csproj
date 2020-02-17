@@ -9,7 +9,7 @@
         <Description>Simple mappings from object to object - because I just needed a simple-as-can-be mapping library</Description>
         <Copyright>Rosenbjerg Softworks</Copyright>
         <PackageProjectUrl>https://github.com/rosenbjerg/SimpleMappings</PackageProjectUrl>
-        <PackageLicenseUrl>https://github.com/rosenbjerg/SimpleMappings/blob/master/LICENSE</PackageLicenseUrl>
+        <PackageLicenseUrl></PackageLicenseUrl>
         <RepositoryUrl>https://github.com/rosenbjerg/SimpleMappings</RepositoryUrl>
         <RepositoryType>GitHub</RepositoryType>
         <PackageTags>mappings mapping mapper dto </PackageTags>
