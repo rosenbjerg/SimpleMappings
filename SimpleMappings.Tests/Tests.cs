@@ -8,12 +8,22 @@ namespace SimpleMappings.Tests
     public class Tests
     {
         [Test]
-        public void ThrowsIfAnyPropertyIsUnmapped()
+        public void ThrowsIfOnePropertyIsUnmapped()
         {
             Assert.Throws<MappingException>(() =>
             {
                 MappingBuilder<MyClass, MyClassDto>.New()
                     .AutomapRemaining()
+                    .ThrowIfUnmapped()
+                    .UsingFactory<MyClassDto>();
+            });
+        }
+        [Test]
+        public void ThrowsIfAllPropertiesAreUnmapped()
+        {
+            Assert.Throws<MappingException>(() =>
+            {
+                MappingBuilder<MyClass, MyClassDto>.New()
                     .ThrowIfUnmapped()
                     .UsingFactory<MyClassDto>();
             });
@@ -25,7 +35,7 @@ namespace SimpleMappings.Tests
             Assert.DoesNotThrow(() =>
             {
                 MappingBuilder<MyClass, MyClassDto>.New()
-                    .MapProperty(mc => mc.Structs.Sum(s => s.Stat), mcd => mcd.sumOfStructs)
+                    .MapProperty(dto => dto.sumOfStructs, model => model.Structs.Sum(s => s.Stat))
                     .AutomapRemaining()
                     .ThrowIfUnmapped()
                     .UsingFactory<MyClassDto>();
@@ -78,7 +88,7 @@ namespace SimpleMappings.Tests
         public void ManuallyMappedProperty()
         {
             var mapper = MappingBuilder<MyClass, MyClassDto>.New()
-                .MapProperty(mc => mc.Structs.Sum(s => s.Stat), mcd => mcd.sumOfStructs)
+                .MapProperty(d => d.sumOfStructs, m => m.Structs.Sum(s => s.Stat))
                 .UsingFactory<MyClassDto>();
 
             var model = new MyClass
@@ -98,7 +108,7 @@ namespace SimpleMappings.Tests
         class Mapper : MapperBase
         {
             public Mapping<MyClass, MyClassDto> MyClassMapper => MappingBuilder<MyClass, MyClassDto>.New()
-                .MapProperty(mc => mc.Structs.Sum(s => s.Stat), mcd => mcd.sumOfStructs)
+                .MapProperty(dto => dto.sumOfStructs, model => model.Structs.Sum(s => s.Stat))
                 .AutomapRemaining()
                 .UsingFactory<MyClassDto>();
         }

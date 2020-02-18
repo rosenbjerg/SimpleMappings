@@ -30,7 +30,8 @@ namespace SimpleMappings
         /// <exception cref="MappingException">For properties that already has a mapping</exception>
         /// <exception cref="MappingException">If no destination property was found</exception>
         public MappingBuilder<TSource, TDestination> MapProperty<TProperty>(
-            Func<TSource, TProperty> getter, Expression<Func<TDestination, TProperty>> propertySelector)
+            Expression<Func<TDestination, TProperty>> propertySelector,
+            Func<TSource, TProperty> getter)
         {
             var propertyName = GetMemberName(propertySelector);
             if (_mapped.ContainsKey(propertyName)) throw new MappingException($"The property {propertyName} has already been mapped");
