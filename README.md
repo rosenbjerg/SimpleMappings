@@ -1,4 +1,4 @@
-# SimpleMapper
+# SimpleMappings
  Simple mappings from object to object - because I just needed a simple-as-can-be mapping library
 
 ![CI](https://github.com/rosenbjerg/SimpleMappings/workflows/CI/badge.svg)
